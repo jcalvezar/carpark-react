@@ -13,8 +13,10 @@ import Jrecupero from "./Jrecupero";
 import PageError from "./PageError";
 
 // Portfolio
-import Memoria from "../Memoria";
-import Encuestas from "../Encuestas";
+import PanelAdmin from "../PanelAdmin";
+import AdminParkings from "../AdminParkings";
+import AdminUsers from "../AdminUsers";
+import AdminCars from "../AdminCars";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,8 +59,10 @@ export default function Layout() {
             path="/recupero"
             render={() => <Jrecupero appname={appName} />}
           />
-          <Route exact path="/memoria" render={() => <Memoria />} />
-          <Route exact path="/encuestas" render={() => <Encuestas />} />
+          <Route exact path="/paneladmin" render={() => <PanelAdmin />} />
+          <Route exact path="/adminparkings" render={() => <AdminParkings />} />
+          <Route exact path="/adminusers" render={() => <AdminUsers />} />
+          <Route exact path="/admincars" render={() => <AdminCars />} />
           <Route component={PageError} />
         </Switch>
       </BrowserRouter>

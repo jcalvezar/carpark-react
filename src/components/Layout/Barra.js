@@ -12,7 +12,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import DriveEtaIcon from "@material-ui/icons/DriveEta";
 
 import Jlogin from "./Jlogin";
-import Jmenu from "./Jmenu";
+import Jmenulist from "./Jmenulist";
 import Usermenu from "./Usermenu";
 
 const useStyles = makeStyles((theme) => ({
@@ -109,17 +109,17 @@ function Barra(props) {
 
           {isAuthenticated ? (
             <React.Fragment>
-              <Jmenu />
+              <Jmenulist />
               <div className={classes.separador}></div>
               <Usermenu onSalir={logout} />
             </React.Fragment>
           ) : (
-            <React.Fragment>
-              <Jmenu />
-              <div className={classes.separador}></div>
-              <Jlogin onClick={props.login} />
-            </React.Fragment>
-          )}
+              <React.Fragment>
+                <Jmenulist />
+                <div className={classes.separador}></div>
+                <Jlogin onClick={props.login} />
+              </React.Fragment>
+            )}
         </Toolbar>
       </Container>
     </AppBar>
