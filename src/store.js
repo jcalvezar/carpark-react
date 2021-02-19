@@ -21,7 +21,11 @@ const initialState = {
         { id: 5, datein: '2018-01-10 10:47:46', vin: '6935364050563', place: 301 },
     ],
     logs: [
-
+        { id: 1, time: '2018-01-06 10:47:46', origen: 'PC', lastname: 'jj', firstname: 'aa', action: 'Log In' },
+        { id: 2, time: '2018-01-06 10:47:46', origen: 'PC', lastname: 'jj', firstname: 'aa', action: 'Log In' },
+        { id: 3, time: '2018-01-06 10:47:46', origen: 'PC', lastname: 'jj', firstname: 'aa', action: 'Log In' },
+        { id: 4, time: '2018-01-06 10:47:46', origen: 'PC', lastname: 'jj', firstname: 'aa', action: 'Log In' },
+        { id: 5, time: '2018-01-06 10:47:46', origen: 'PC', lastname: 'jj', firstname: 'aa', action: 'Log In' },
     ]
 };
 const store = createContext(initialState);

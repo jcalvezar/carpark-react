@@ -1,31 +1,37 @@
 import React from 'react';
 import Jmenu from "./Jmenu";
 
-import MemoryIcon from '@material-ui/icons/Memory';
+//import MemoryIcon from '@material-ui/icons/Memory';
 import PollIcon from '@material-ui/icons/Poll';
+import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import CommuteIcon from '@material-ui/icons/Commute';
+import CropFreeIcon from '@material-ui/icons/CropFree';
+import BookIcon from '@material-ui/icons/Book';
+import BackupIcon from '@material-ui/icons/Backup';
 
 const menus = [
 	{
 		text: 'Menu',
 		items: [
-			{ icon: MemoryIcon, path: '/paneladmin', text: 'Panel de Admin' },
-			{ icon: PollIcon, path: '/adminparkings', text: 'Admin de Estacionamientos' },
-			{ icon: MemoryIcon, path: '/adminusers', text: 'Admin de Usuarios' },
-			{ icon: PollIcon, path: '/admincars', text: 'Admin de Vehiculos' }
+			{ icon: PollIcon, path: '/paneladmin', text: 'Panel de Admin' },
+			{ icon: EmojiTransportationIcon, path: '/adminparkings', text: 'Admin de Estacionamientos' },
+			{ icon: PeopleAltIcon, path: '/adminusers', text: 'Admin de Usuarios' },
+			{ icon: CommuteIcon, path: '/admincars', text: 'Admin de Vehiculos' }
 		]
 	},
 	{
 		text: 'Listados',
 		items: [
-			{ icon: MemoryIcon, path: '/listavehiculos', text: 'Listado de Vehiculos' },
-			{ icon: PollIcon, path: '/generabarcode', text: 'Generador de Codigos de Barra' }
+			{ icon: CommuteIcon, path: '/listavehiculos', text: 'Listado de Vehiculos' },
+			{ icon: CropFreeIcon, path: '/generabarcode', text: 'Generador de Codigos de Barra' }
 		]
 	},
 	{
 		text: 'Seguridad',
 		items: [
-			{ icon: MemoryIcon, path: '/bitacora', text: 'Bitacora' },
-			{ icon: PollIcon, path: '/backup', text: 'Backups' },
+			{ icon: BookIcon, path: '/bitacora', text: 'Bitacora' },
+			{ icon: BackupIcon, path: '/backup', text: 'Backups' },
 		]
 	},
 ];
@@ -33,7 +39,7 @@ const menus = [
 export default function Jmenulist() {
 	return (
 		<>
-			{ menus.map(x => (<Jmenu text={x.text} items={x.items} />))}
+			{ menus.map((x, key) => (<Jmenu key={key} text={x.text} items={x.items} />))}
 		</>
 	)
 }
