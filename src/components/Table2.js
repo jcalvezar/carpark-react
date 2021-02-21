@@ -62,6 +62,7 @@ function EnhancedTableHead(props) {
             <TableRow>
                 <TableCell padding="checkbox">
                     <Checkbox
+                        style={{ padding: '5px 0px' }}
                         indeterminate={numSelected > 0 && numSelected < rowCount}
                         checked={rowCount > 0 && numSelected === rowCount}
                         onChange={onSelectAllClick}
@@ -70,7 +71,7 @@ function EnhancedTableHead(props) {
                 </TableCell>
                 {props.headCells.map((headCell) => (
                     <TableCell
-                        //width={headCell.width}
+                        width={headCell.width}
                         key={headCell.name}
                         align={headCell.align}
                         padding={headCell.disablePadding ? 'none' : 'default'}
@@ -177,7 +178,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(2),
     },
     table: {
-        minWidth: 750,
+        minWidth: 400,
     },
     visuallyHidden: {
         border: 0,
@@ -296,6 +297,7 @@ export default function EnhancedTable(props) {
                                     >
                                         <TableCell padding="checkbox">
                                             <Checkbox
+                                                style={{ padding: '5px 0px' }}
                                                 checked={isItemSelected}
                                                 inputProps={{ 'aria-labelledby': labelId }}
                                             />
@@ -303,11 +305,11 @@ export default function EnhancedTable(props) {
 
                                         {props.data.fields.map((field, idx) => {
                                             if (field.name === 'id') return (
-                                                <TableCell key={idx} component="th" id={labelId} scope="row" padding="none">
+                                                <TableCell key={idx} component="th" id={labelId} scope="row" padding={field.disablePadding ? 'none' : 'default'} width={field.width}>
                                                     {row.id}
                                                 </TableCell>);
                                             if (field.name === 'acc') return (
-                                                <TableCell padding='none' key={idx} align="right">
+                                                <TableCell padding={field.disablePadding ? 'none' : 'default'} key={idx} align="right" width={field.width}>
                                                     <ButtonGroup size="small" color="primary" aria-label="contained primary small button group">
                                                         <Tooltip title="Editar">
                                                             <IconButton aria-label="Editar">
@@ -321,7 +323,7 @@ export default function EnhancedTable(props) {
                                                         </Tooltip>
                                                     </ButtonGroup>
                                                 </TableCell>);
-                                            return (<TableCell key={idx} align={field.align}>{row[field.name]}</TableCell>)
+                                            return (<TableCell key={idx} align={field.align} padding={field.disablePadding ? 'none' : 'default'} width={field.width}>{row[field.name]}</TableCell>)
                                         })}
                                     </TableRow>
                                 );

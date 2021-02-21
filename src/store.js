@@ -10,10 +10,10 @@ const initialState = {
     ],
     usersFields: [
         { name: 'id', label: 'ID', width: '8%', align: 'left', disablePadding: true },
-        { name: 'lastname', label: 'Apellido', width: '21%', align: 'left', disablePadding: false },
-        { name: 'firstname', label: 'Nombre', width: '25%', align: 'left', disablePadding: false },
-        { name: 'email', label: 'Email', width: '26%', align: 'left', disablePadding: false },
-        { name: 'acc', label: 'Acc.', width: '10%', align: 'right', disablePadding: false }
+        { name: 'lastname', label: 'Apellido', width: '21%', align: 'left', disablePadding: true },
+        { name: 'firstname', label: 'Nombre', width: '25%', align: 'left', disablePadding: true },
+        { name: 'email', label: 'Email', width: '26%', align: 'left', disablePadding: true },
+        { name: 'acc', label: 'Acc.', width: '10%', align: 'right', disablePadding: true }
     ],
     parkings: [
         { id: 1, name: 'AUDEC', from: 200, to: 300 },
@@ -22,10 +22,10 @@ const initialState = {
     ],
     parkingsFields: [
         { name: 'id', label: 'ID', width: '10%', align: 'left', disablePadding: true },
-        { name: 'name', label: 'Nombre', width: '50%', align: 'left', disablePadding: false },
-        { name: 'from', label: 'Desde', width: '15%', align: 'right', disablePadding: false },
-        { name: 'to', label: 'Hasta', width: '15%', align: 'right', disablePadding: false },
-        { name: 'acc', label: 'Acc.', width: '10%', align: 'right', disablePadding: false }
+        { name: 'name', label: 'Nombre', width: '50%', align: 'left', disablePadding: true },
+        { name: 'from', label: 'Desde', width: '15%', align: 'right', disablePadding: true },
+        { name: 'to', label: 'Hasta', width: '15%', align: 'right', disablePadding: true },
+        { name: 'acc', label: 'Acc.', width: '10%', align: 'right', disablePadding: true }
     ],
     cars: [
         { id: 1, datein: '2018-01-06 10:47:46', vin: '6935364050559', place: 101 },
@@ -36,10 +36,10 @@ const initialState = {
     ],
     carsFields: [
         { name: 'id', label: 'ID', width: '5%', align: 'left', disablePadding: true },
-        { name: 'datein', label: 'Ingreso', width: '50%', align: 'left', disablePadding: false },
-        { name: 'vin', label: 'VIN', width: '30%', align: 'right', disablePadding: false },
-        { name: 'place', label: 'Puesto', width: '5%', align: 'right', disablePadding: false },
-        { name: 'acc', label: 'Acc.', width: '10%', align: 'right', disablePadding: false }
+        { name: 'datein', label: 'Ingreso', width: '50%', align: 'left', disablePadding: true },
+        { name: 'vin', label: 'VIN', width: '30%', align: 'right', disablePadding: true },
+        { name: 'place', label: 'Puesto', width: '5%', align: 'right', disablePadding: true },
+        { name: 'acc', label: 'Acc.', width: '10%', align: 'right', disablePadding: true }
     ],
     logs: [
         { id: 1, time: '10:47:46', origen: 'PC', lastname: 'jj', firstname: 'aa', action: 'Log In' },
@@ -50,11 +50,11 @@ const initialState = {
     ],
     logsFields: [
         { name: 'id', label: 'ID', width: '8%', align: 'left', disablePadding: true },
-        { name: 'time', label: 'Hora', width: '22%', align: 'left', disablePadding: false },
-        { name: 'origen', label: 'Origen', width: '12%', align: 'left', disablePadding: false },
-        { name: 'lastname', label: 'Apellido', width: '19%', align: 'left', disablePadding: false },
-        { name: 'firstname', label: 'Nombre', width: '19%', align: 'left', disablePadding: false },
-        { name: 'action', label: 'Evento', width: '10%', align: 'right', disablePadding: false }
+        { name: 'time', label: 'Hora', width: '22%', align: 'left', disablePadding: true },
+        { name: 'origen', label: 'Origen', width: '12%', align: 'left', disablePadding: true },
+        { name: 'lastname', label: 'Apellido', width: '19%', align: 'left', disablePadding: true },
+        { name: 'firstname', label: 'Nombre', width: '19%', align: 'left', disablePadding: true },
+        { name: 'action', label: 'Evento', width: '10%', align: 'right', disablePadding: true }
     ]
 };
 const store = createContext(initialState);
