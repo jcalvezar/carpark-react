@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import JTabla from '../Table';
+//import JTabla from '../Table';
+import JTabla from '../Table2';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -27,7 +28,11 @@ export default function AdminEstacionamientos() {
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	const { state } = useContext(store);
-	const parkings = { fields: [{ name: 'id', width: '10%' }, { name: 'name', width: '10%' }, { name: 'from', width: '10%' }, { name: 'to', width: '10%' }, { name: 'acc', width: '10%' }], rows: state.parkings };
+	const parkings = {
+		title: 'Estacionamientos',
+		fields: state.parkingsFields,
+		rows: state.parkings
+	};
 
 	return (
 		<Container fixed style={{ paddingTop: "20px" }}>
@@ -35,7 +40,7 @@ export default function AdminEstacionamientos() {
 				Administrador de Estacionamientos
     	</Typography>
 			<Paper elevation={5} className={fixedHeightPaper}>
-				<JTabla title="Estacionamientos" datas={parkings} />
+				<JTabla data={parkings} />
 			</Paper>
 		</Container>
 	)

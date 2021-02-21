@@ -21,6 +21,7 @@ function preventDefault(event) {
 const useStyles = makeStyles((theme) => ({
 	seeMore: {
 		marginTop: theme.spacing(3),
+		display: 'flex', justifyContent: 'flex-end'
 	},
 }));
 

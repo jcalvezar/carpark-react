@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Orders from '../Table';
+import JTable from '../Table2';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -27,10 +27,10 @@ export default function Dashboard() {
 
 	const { state } = useContext(store);
 
-	const users = { fields: [{ name: 'id', width: '8%' }, { name: 'lastname', width: '21%' }, { name: 'firstname', width: '25%' }, { name: 'email', width: '26%' }, { name: 'acc', width: '10%' }], rows: state.users };
-	const parkings = { fields: [{ name: 'id', width: '10%' }, { name: 'name', width: '10%' }, { name: 'from', width: '10%' }, { name: 'to', width: '10%' }, { name: 'acc', width: '10%' }], rows: state.parkings };
-	const cars = { fields: [{ name: 'id', width: '5%' }, { name: 'datein', width: '50%' }, { name: 'vin', width: '30%' }, { name: 'place', width: '5%' }, { name: 'acc', width: '10%' }], rows: state.cars };
-	const logs = { fields: [{ name: 'id', width: '8%' }, { name: 'time', width: '32%' }, { name: 'origen', width: '12%' }, { name: 'lastname', width: '19%' }, { name: 'firstname', width: '19%' }, { name: 'action', width: '10%' }], rows: state.logs };
+	const users = { title: 'Usuarios', fields: state.usersFields, rows: state.users };
+	const parkings = { title: 'Estacionamientos', fields: state.parkingsFields, rows: state.parkings };
+	const cars = { title: 'Vehiculos', fields: state.carsFields, rows: state.cars };
+	const logs = { title: 'Bitacora', fields: state.logsFields, rows: state.logs };
 
 	return (
 		<>
@@ -38,25 +38,25 @@ export default function Dashboard() {
 				{/* Chart */}
 				<Grid item xs={12} md={6} lg={6}>
 					<Paper elevation={5} className={fixedHeightPaper}>
-						<Orders title="Usuarios" datas={users} />
+						<JTable data={users} />
 					</Paper>
 				</Grid>
 				{/* Recent Deposits */}
 				<Grid item xs={12} md={6} lg={6}>
 					<Paper elevation={5} className={fixedHeightPaper}>
-						<Orders title="Bitacora" datas={logs} />
+						<JTable data={logs} />
 					</Paper>
 				</Grid>
 				{/* Recent Orders */}
 				<Grid item xs={12} md={6} lg={6}>
 					<Paper elevation={5} className={fixedHeightPaper}>
-						<Orders title="Estacionamientos" datas={parkings} />
+						<JTable data={parkings} />
 					</Paper>
 				</Grid>
 				{/* Recent Orders */}
 				<Grid item xs={12} md={6} lg={6}>
 					<Paper elevation={5} className={fixedHeightPaper}>
-						<Orders title="Vehiculos" datas={cars} />
+						<JTable data={cars} />
 					</Paper>
 				</Grid>
 			</Grid>
