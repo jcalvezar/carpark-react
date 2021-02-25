@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -20,10 +20,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 //import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 //import FilterListIcon from '@material-ui/icons/FilterList';
-//import AddIcon from '@material-ui/icons/Add';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddIcon from '@material-ui/icons/Add';
+//import AddCircleIcon from '@material-ui/icons/AddCircle';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import EditIcon from '@material-ui/icons/Edit';
+import Fab from '@material-ui/core/Fab';
+//import Modal from './AdminParkings/Modal';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -153,13 +155,16 @@ const EnhancedTableToolbar = (props) => {
                         <DeleteIcon />
                     </IconButton>
                 </Tooltip>
-            ) : (
-                    <Tooltip title="Agregar Registro">
-                        <IconButton color="secondary" aria-label="agregar registro">
-                            <AddCircleIcon />
-                        </IconButton>
-                    </Tooltip>
-                )}
+            ) : props.canAdd ? (
+                <Tooltip title="Agregar Registro">
+
+                    <Fab aria-label="agregar registro" onClick={props.openModal}>
+                        <AddIcon />
+                    </Fab>
+
+                </Tooltip>) : null
+            }
+
         </Toolbar>
     );
 };
@@ -194,6 +199,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EnhancedTable(props) {
+    const modalEl = useRef({});
+    const Modal = props.data.modal;
+    //const modalEl = Modal;
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -247,6 +255,12 @@ export default function EnhancedTable(props) {
         setPage(0);
     };
 
+    const handleModal = () => {
+        modalEl.current && modalEl.current.handleClickOpen();
+        //modalEl.current && console.log('Hay algo en current');
+        console.log('Deberia abrir');
+    }
+
     /*
     const handleChangeDense = (event) => {
         setDense(event.target.checked);
@@ -258,97 +272,102 @@ export default function EnhancedTable(props) {
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
-        <div className={classes.root}>
+        <>
+            <div className={classes.root}>
 
-            <EnhancedTableToolbar numSelected={selected.length} title={props.data.title} />
-            <TableContainer>
-                <Table
-                    className={classes.table}
-                    aria-labelledby="tableTitle"
-                    size={dense ? 'small' : 'medium'}
-                    aria-label="enhanced table"
-                >
-                    <EnhancedTableHead
-                        classes={classes}
-                        numSelected={selected.length}
-                        order={order}
-                        orderBy={orderBy}
-                        onSelectAllClick={handleSelectAllClick}
-                        onRequestSort={handleRequestSort}
-                        rowCount={rows.length}
-                        headCells={props.data.fields}
-                    />
-                    <TableBody>
-                        {stableSort(rows, getComparator(order, orderBy))
-                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map((row, index) => {
-                                const isItemSelected = isSelected(row.id);
-                                const labelId = `enhanced-table-checkbox-${index}`;
+                <EnhancedTableToolbar numSelected={selected.length} title={props.data.title} openModal={handleModal} canAdd={props.data.canAdd} />
+                <TableContainer>
+                    <Table
+                        className={classes.table}
+                        aria-labelledby="tableTitle"
+                        size={dense ? 'small' : 'medium'}
+                        aria-label="enhanced table"
+                    >
+                        <EnhancedTableHead
+                            classes={classes}
+                            numSelected={selected.length}
+                            order={order}
+                            orderBy={orderBy}
+                            onSelectAllClick={handleSelectAllClick}
+                            onRequestSort={handleRequestSort}
+                            rowCount={rows.length}
+                            headCells={props.data.fields}
+                        />
+                        <TableBody>
+                            {stableSort(rows, getComparator(order, orderBy))
+                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .map((row, index) => {
+                                    const isItemSelected = isSelected(row.id);
+                                    const labelId = `enhanced-table-checkbox-${index}`;
 
-                                return (
-                                    <TableRow
-                                        hover
-                                        onClick={(event) => handleClick(event, row.id)}
-                                        role="checkbox"
-                                        aria-checked={isItemSelected}
-                                        tabIndex={-1}
-                                        key={row.id}
-                                        selected={isItemSelected}
-                                    >
-                                        <TableCell padding="checkbox">
-                                            <Checkbox
-                                                style={{ padding: '5px 0px' }}
-                                                checked={isItemSelected}
-                                                inputProps={{ 'aria-labelledby': labelId }}
-                                            />
-                                        </TableCell>
+                                    return (
+                                        <TableRow
+                                            hover
 
-                                        {props.data.fields.map((field, idx) => {
-                                            if (field.name === 'id') return (
-                                                <TableCell key={idx} component="th" id={labelId} scope="row" padding={field.disablePadding ? 'none' : 'default'} width={field.width}>
-                                                    {row.id}
-                                                </TableCell>);
-                                            if (field.name === 'acc') return (
-                                                <TableCell padding={field.disablePadding ? 'none' : 'default'} key={idx} align="right" width={field.width}>
-                                                    <ButtonGroup size="small" color="primary" aria-label="contained primary small button group">
-                                                        <Tooltip title="Editar">
-                                                            <IconButton aria-label="Editar">
-                                                                <EditIcon />
-                                                            </IconButton>
-                                                        </Tooltip>
-                                                        <Tooltip title="Borrar">
-                                                            <IconButton color="secondary" aria-label="Borrar">
-                                                                <DeleteIcon />
-                                                            </IconButton>
-                                                        </Tooltip>
-                                                    </ButtonGroup>
-                                                </TableCell>);
-                                            return (<TableCell key={idx} align={field.align} padding={field.disablePadding ? 'none' : 'default'} width={field.width}>{row[field.name]}</TableCell>)
-                                        })}
-                                    </TableRow>
-                                );
-                            })}
-                        {emptyRows > 0 && (
-                            <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                                <TableCell colSpan={6} />
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[5, 10, 25]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
+                                            role="checkbox"
+                                            aria-checked={isItemSelected}
+                                            tabIndex={-1}
+                                            key={row.id}
+                                            selected={isItemSelected}
+                                        >
+                                            <TableCell padding="checkbox" onClick={(event) => handleClick(event, row.id)}>
+                                                <Checkbox
+                                                    style={{ padding: '5px 0px' }}
+                                                    checked={isItemSelected}
+                                                    inputProps={{ 'aria-labelledby': labelId }}
+                                                />
+                                            </TableCell>
+
+                                            {props.data.fields.map((field, idx) => {
+                                                if (field.name === 'id') return (
+                                                    <TableCell key={idx} component="th" id={labelId} scope="row" padding={field.disablePadding ? 'none' : 'default'} width={field.width}>
+                                                        {row.id}
+                                                    </TableCell>);
+                                                if (field.name === 'acc') return (
+                                                    <TableCell padding={field.disablePadding ? 'none' : 'default'} key={idx} align="right" width={field.width}>
+                                                        <ButtonGroup size="small" color="primary" aria-label="contained primary small button group">
+                                                            <Tooltip title="Editar">
+                                                                <IconButton aria-label="Editar" onClick={handleModal}>
+                                                                    <EditIcon />
+                                                                </IconButton>
+                                                            </Tooltip>
+                                                            <Tooltip title="Borrar">
+                                                                <IconButton color="secondary" aria-label="Borrar">
+                                                                    <DeleteIcon />
+                                                                </IconButton>
+                                                            </Tooltip>
+                                                        </ButtonGroup>
+                                                    </TableCell>);
+                                                return (<TableCell key={idx} align={field.align} padding={field.disablePadding ? 'none' : 'default'} width={field.width}>{row[field.name]}</TableCell>)
+                                            })}
+                                        </TableRow>
+                                    );
+                                })}
+                            {emptyRows > 0 && (
+                                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
+                                    <TableCell colSpan={6} />
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[5, 10, 25]}
+                    component="div"
+                    count={rows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                />
 
 
-        </div>
+            </div>
+            {Modal ? (<Modal myRef={modalEl} />) : null}
+        </>
+
     );
+
 }
 
 /*

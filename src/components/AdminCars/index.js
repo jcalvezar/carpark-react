@@ -30,7 +30,8 @@ export default function AdminEstacionamientos() {
 	const cars = {
 		title: 'Vehiculos',
 		fields: state.carsFields,
-		rows: state.cars
+		rows: state.cars,
+		canAdd: true
 	};
 
 	return (

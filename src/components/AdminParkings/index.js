@@ -31,7 +31,8 @@ export default function AdminEstacionamientos() {
 	const parkings = {
 		title: 'Estacionamientos',
 		fields: state.parkingsFields,
-		rows: state.parkings
+		rows: state.parkings,
+		canAdd: true
 	};
 
 	return (

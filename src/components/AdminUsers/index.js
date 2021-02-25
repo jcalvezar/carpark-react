@@ -30,7 +30,8 @@ export default function AdminEstacionamientos() {
 	const users = {
 		title: 'Usuarios',
 		fields: state.usersFields,
-		rows: state.users
+		rows: state.users,
+		canAdd: true
 	};
 
 	return (
