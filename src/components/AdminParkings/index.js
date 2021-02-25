@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 //import JTabla from '../Table';
 import JTabla from '../Table2';
+import ModalParkings from './Modal';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -32,7 +33,8 @@ export default function AdminEstacionamientos() {
 		title: 'Estacionamientos',
 		fields: state.parkingsFields,
 		rows: state.parkings,
-		canAdd: true
+		canAdd: true,
+		modal: ModalParkings
 	};
 
 	return (

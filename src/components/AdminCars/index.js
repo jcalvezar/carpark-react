@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import JTabla from '../Table2';
+import ModalCars from './Modal';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -22,16 +23,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function AdminEstacionamientos() {
+export default function AdminCars() {
+	console.log('Entre a AdminCars');
+
 	const classes = useStyles();
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	const { state } = useContext(store);
+
 	const cars = {
 		title: 'Vehiculos',
 		fields: state.carsFields,
 		rows: state.cars,
-		canAdd: true
+		canAdd: true,
+		modal: ModalCars
 	};
 
 	return (
