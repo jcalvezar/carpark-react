@@ -5,7 +5,7 @@ export default function MiModal(props) {
     const [row, setRow] = useState(false);
 
     return (
-        <Modal myRef={props.myRef} title="Editar Vehiculos" setRow={setRow}>
+        <Modal myRef={props.myRef} title={row ? "Editar un Vehiculo" : "Agregar un Vehiculo"} setRow={setRow}>
             prueba de JCA de Vehiculos
         </Modal>
     )
