@@ -52,8 +52,9 @@ const DialogActions = withStyles((theme) => ({
 export default function CustomizedDialogs(props) {
 	const [open, setOpen] = React.useState(false);
 
-	const handleClickOpen = () => {
+	const handleClickOpen = (row) => {
 		setOpen(true);
+		props.setRow(row);
 	};
 	props.myRef.current.handleClickOpen = handleClickOpen;
 

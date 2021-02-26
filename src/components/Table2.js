@@ -255,10 +255,9 @@ export default function EnhancedTable(props) {
         setPage(0);
     };
 
-    const handleModal = () => {
-        modalEl.current && modalEl.current.handleClickOpen();
-        //modalEl.current && console.log('Hay algo en current');
-        console.log('Deberia abrir');
+    const handleModal = (row) => {
+        modalEl.current && modalEl.current.handleClickOpen(row);
+        //console.log('Deberia abrir');
     }
 
     /*
@@ -275,7 +274,7 @@ export default function EnhancedTable(props) {
         <>
             <div className={classes.root}>
 
-                <EnhancedTableToolbar numSelected={selected.length} title={props.data.title} openModal={handleModal} canAdd={props.data.canAdd} />
+                <EnhancedTableToolbar numSelected={selected.length} title={props.data.title} openModal={() => { handleModal(false); }} canAdd={props.data.canAdd} />
                 <TableContainer>
                     <Table
                         className={classes.table}
@@ -327,7 +326,7 @@ export default function EnhancedTable(props) {
                                                     <TableCell padding={field.disablePadding ? 'none' : 'default'} key={idx} align="right" width={field.width}>
                                                         <ButtonGroup size="small" color="primary" aria-label="contained primary small button group">
                                                             <Tooltip title="Editar">
-                                                                <IconButton aria-label="Editar" onClick={handleModal}>
+                                                                <IconButton aria-label="Editar" onClick={() => { handleModal(row); }}>
                                                                     <EditIcon />
                                                                 </IconButton>
                                                             </Tooltip>
