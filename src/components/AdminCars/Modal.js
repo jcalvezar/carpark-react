@@ -13,18 +13,18 @@ export default function MiModal(props) {
         ("0" + d.getDate()).slice(-2)) + "T" + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + ("0" + d.getSeconds()).slice(-2);
 
     const handleUpdate = () => {
-        console.log(row ? "UPDATE un Vehiculo" : "ADD un Vehiculo");
+        console.log(row.id === '0' ? "UPDATE un Vehiculo" : "ADD un Vehiculo");
     }
 
     return (
-        <Modal myRef={props.myRef} title={row ? "Editar un Vehiculo" : "Agregar un Vehiculo"} setRow={setRow} handleUpdate={handleUpdate}>
+        <Modal myRef={props.myRef} title={row.id === '0' ? "Editar un Vehiculo" : "Agregar un Vehiculo"} setRow={setRow} handleUpdate={handleUpdate}>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         id="ingreso"
                         label="Ingreso"
                         type="datetime-local"
-                        defaultValue={row ? row.datein.replace(' ', 'T') : datestring}
+                        defaultValue={row.id === '0' ? row.datein.replace(' ', 'T') : datestring}
                         InputLabelProps={{
                             shrink: true,
                         }}

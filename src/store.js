@@ -65,7 +65,7 @@ const StateProvider = ({ children }) => {
         switch (action.type) {
             case 'ADD_USER':
                 const newState = state;
-                newState.users.push({ id: state.users.length + 1, ...action.payload });
+                newState.users.push({ ...action.payload, id: state.users.length + 1 });
                 return newState;
             default:
                 throw new Error();

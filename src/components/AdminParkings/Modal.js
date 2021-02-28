@@ -9,11 +9,11 @@ export default function MiModal(props) {
 	const [row, setRow] = useState(false);
 
 	const handleUpdate = () => {
-		console.log(row ? "UPDATE un Parking" : "ADD un Parking");
+		console.log(row.id === '0' ? "UPDATE un Parking" : "ADD un Parking");
 	}
 
 	return (
-		<Modal myRef={props.myRef} title={row ? "Editar un Estacionamiento" : "Agregar un Estacionamiento"} setRow={setRow} handleUpdate={handleUpdate}>
+		<Modal myRef={props.myRef} title={row.id === '0' ? "Editar un Estacionamiento" : "Agregar un Estacionamiento"} setRow={setRow} handleUpdate={handleUpdate}>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
 					<TextField
@@ -21,7 +21,7 @@ export default function MiModal(props) {
 						id="nombre"
 						name="nombre"
 						label="Estacionamiento"
-						defaultValue={row ? row.name : ""}
+						defaultValue={row.id === '0' ? row.name : ""}
 						fullWidth
 						autoComplete="email"
 					/>
@@ -32,7 +32,7 @@ export default function MiModal(props) {
 						id="desde"
 						name="desde"
 						label="Desde"
-						defaultValue={row ? row.from : ""}
+						defaultValue={row.id === '0' ? row.from : ""}
 						fullWidth
 						autoComplete="given-name"
 					/>
@@ -43,7 +43,7 @@ export default function MiModal(props) {
 						id="hasta"
 						name="hasta"
 						label="Hasta"
-						defaultValue={row ? row.to : ""}
+						defaultValue={row.id === '0' ? row.to : ""}
 						fullWidth
 						autoComplete="family-name"
 					/>

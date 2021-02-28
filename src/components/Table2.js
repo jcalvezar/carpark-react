@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -12,20 +12,14 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-//import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
-//import FilterListIcon from '@material-ui/icons/FilterList';
 import AddIcon from '@material-ui/icons/Add';
-//import AddCircleIcon from '@material-ui/icons/AddCircle';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
-//import Modal from './AdminParkings/Modal';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -201,15 +195,19 @@ const useStyles = makeStyles((theme) => ({
 export default function EnhancedTable(props) {
     const modalEl = useRef({});
     const Modal = props.data.modal;
-    //const modalEl = Modal;
     const classes = useStyles();
-    const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('calories');
-    const [selected, setSelected] = React.useState([]);
-    const [page, setPage] = React.useState(0);
-    const [dense, setDense] = React.useState(true);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    const rows = props.data.rows;
+    const [order, setOrder] = useState('asc');
+    const [orderBy, setOrderBy] = useState('calories');
+    const [selected, setSelected] = useState([]);
+    const [page, setPage] = useState(0);
+    const dense = true;
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rows, setRows] = useState(props.data.rows);
+    //const rows = props.data.rows;
+
+    useEffect(() => {
+        setRows(props.data.rows);
+    }, [props.data.rows]);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -257,14 +255,7 @@ export default function EnhancedTable(props) {
 
     const handleModal = (row) => {
         modalEl.current && modalEl.current.handleClickOpen(row);
-        //console.log('Deberia abrir');
     }
-
-    /*
-    const handleChangeDense = (event) => {
-        setDense(event.target.checked);
-    };
-    */
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
@@ -274,7 +265,7 @@ export default function EnhancedTable(props) {
         <>
             <div className={classes.root}>
 
-                <EnhancedTableToolbar numSelected={selected.length} title={props.data.title} openModal={() => { handleModal(false); }} canAdd={props.data.canAdd} />
+                <EnhancedTableToolbar numSelected={selected.length} title={props.data.title} openModal={() => { handleModal({ id: 0 }); }} canAdd={props.data.canAdd} />
                 <TableContainer>
                     <Table
                         className={classes.table}
@@ -369,9 +360,3 @@ export default function EnhancedTable(props) {
 
 }
 
-/*
-            <FormControlLabel
-                control={<Switch checked={dense} onChange={handleChangeDense} />}
-                label="Dense padding"
-            />
-*/
