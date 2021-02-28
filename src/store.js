@@ -28,7 +28,7 @@ const initialState = {
         { name: 'acc', label: 'Acc.', width: '10%', align: 'right', disablePadding: true }
     ],
     cars: [
-        { id: 1, datein: '2018-01-06 10:47:46', vin: '6935364050559', place: 101 },
+        { id: 1, datein: '2017-05-24 10:30:45', vin: '6935364050559', place: 101 },
         { id: 2, datein: '2018-01-07 10:47:46', vin: '6935364050560', place: 151 },
         { id: 3, datein: '2018-01-08 10:47:46', vin: '6935364050561', place: 201 },
         { id: 4, datein: '2018-01-09 10:47:46', vin: '6935364050562', place: 251 },
@@ -63,15 +63,21 @@ const { Provider } = store;
 const StateProvider = ({ children }) => {
     const [state, dispatch] = useReducer((state, action) => {
         switch (action.type) {
-            case 'action description':
-                const newState = state; // do something with the action
+            case 'ADD_USER':
+                const newState = state;
+                newState.users.push({ id: state.users.length + 1, ...action.payload });
                 return newState;
             default:
                 throw new Error();
         };
     }, initialState);
 
-    return <Provider value={{ state, dispatch }}>{children}</Provider>;
+    const addUser = (data) => {
+        console.log('addUser en STORE');
+        dispatch({ type: 'ADD_USER', payload: data })
+    }
+
+    return <Provider value={{ state, dispatch, addUser: (data) => addUser(data) }}>{children}</Provider>;
 };
 
 export { store, StateProvider }

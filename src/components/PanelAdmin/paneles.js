@@ -29,6 +29,7 @@ export default function Dashboard() {
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	const { state } = useContext(store);
+	console.log('Se actualizo el STATE');
 
 	const users = { title: 'Usuarios', fields: state.usersFields, rows: state.users, canAdd: true, modal: ModalUsers };
 	const parkings = { title: 'Estacionamientos', fields: state.parkingsFields, rows: state.parkings, canAdd: true, modal: ModalParkings };

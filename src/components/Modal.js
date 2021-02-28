@@ -62,6 +62,11 @@ export default function CustomizedDialogs(props) {
 		setOpen(false);
 	};
 
+	const handleUpdate = () => {
+		props.handleUpdate();
+		setOpen(false);
+	};
+
 	return (
 		<div>
 			<Dialog fullWidth={true} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
@@ -72,8 +77,11 @@ export default function CustomizedDialogs(props) {
 					{props.children}
 				</DialogContent>
 				<DialogActions>
-					<Button autoFocus onClick={handleClose} color="primary">
+					<Button autoFocus onClick={handleUpdate} color="primary">
 						Guardar Cambios
+          </Button>
+					<Button onClick={handleClose} color="primary">
+						Cancelar
           </Button>
 				</DialogActions>
 			</Dialog>
