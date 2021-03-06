@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { store } from '../../store.js';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -28,13 +28,22 @@ export default function AdminEstacionamientos() {
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	const { state } = useContext(store);
-	const users = {
+	let users = {
 		title: 'Usuarios',
 		fields: state.usersFields,
 		rows: state.users,
 		canAdd: true,
 		modal: ModalUsers
 	};
+	/*
+	useEffect(() => {
+		users = {
+			...users,
+			fields: state.usersFields,
+			rows: state.users
+		};
+	}, [state])
+	*/
 
 	return (
 		<Container fixed style={{ paddingTop: "20px" }}>

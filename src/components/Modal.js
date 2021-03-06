@@ -64,6 +64,7 @@ export default function CustomizedDialogs(props) {
 
 	const handleUpdate = () => {
 		props.handleUpdate();
+		props.guardar();
 		setOpen(false);
 	};
 

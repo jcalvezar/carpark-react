@@ -30,7 +30,7 @@ export default function MiModal(props) {
 	};
 
 	return (
-		<Modal myRef={props.myRef} title={row.id === '0' ? "Editar un Usuario" : "Agregar un Usuario"} setRow={setRow} handleUpdate={handleUpdate}>
+		<Modal myRef={props.myRef} guardar={props.guardar} title={row.id === '0' ? "Editar un Usuario" : "Agregar un Usuario"} setRow={setRow} handleUpdate={handleUpdate}>
 			<Grid container spacing={3}>
 				<Grid item xs={12} sm={6}>
 					<TextField
