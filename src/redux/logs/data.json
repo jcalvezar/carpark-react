@@ -1,0 +1,88 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "time": "10:47:46",
+      "origen": "PC",
+      "lastname": "jj",
+      "firstname": "aa",
+      "action": "Log In"
+    },
+    {
+      "id": 2,
+      "time": "10:47:49",
+      "origen": "PC",
+      "lastname": "jj",
+      "firstname": "aa",
+      "action": "Log Out"
+    },
+    {
+      "id": 3,
+      "time": "10:47:55",
+      "origen": "PC",
+      "lastname": "jj",
+      "firstname": "aa",
+      "action": "Cars"
+    },
+    {
+      "id": 4,
+      "time": "10:47:56",
+      "origen": "PC",
+      "lastname": "jj",
+      "firstname": "aa",
+      "action": "Log In"
+    },
+    {
+      "id": 5,
+      "time": "10:47:59",
+      "origen": "PC",
+      "lastname": "jj",
+      "firstname": "aa",
+      "action": "Log In"
+    }
+  ],
+  "logsFields": [
+    {
+      "name": "id",
+      "label": "ID",
+      "width": "8%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "time",
+      "label": "Hora",
+      "width": "22%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "origen",
+      "label": "Origen",
+      "width": "12%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "lastname",
+      "label": "Apellido",
+      "width": "19%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "firstname",
+      "label": "Nombre",
+      "width": "19%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "action",
+      "label": "Evento",
+      "width": "10%",
+      "align": "right",
+      "disablePadding": true
+    }
+  ]
+}

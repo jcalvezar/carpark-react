@@ -1,0 +1,71 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "datein": "2017-05-24 10:30:45",
+      "vin": "6935364050559",
+      "place": 101
+    },
+    {
+      "id": 2,
+      "datein": "2018-01-07 10:47:46",
+      "vin": "6935364050560",
+      "place": 151
+    },
+    {
+      "id": 3,
+      "datein": "2018-01-08 10:47:46",
+      "vin": "6935364050561",
+      "place": 201
+    },
+    {
+      "id": 4,
+      "datein": "2018-01-09 10:47:46",
+      "vin": "6935364050562",
+      "place": 251
+    },
+    {
+      "id": 5,
+      "datein": "2018-01-10 10:47:46",
+      "vin": "6935364050563",
+      "place": 301
+    }
+  ],
+  "carsFields": [
+    {
+      "name": "id",
+      "label": "ID",
+      "width": "5%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "datein",
+      "label": "Ingreso",
+      "width": "50%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "vin",
+      "label": "VIN",
+      "width": "30%",
+      "align": "right",
+      "disablePadding": true
+    },
+    {
+      "name": "place",
+      "label": "Puesto",
+      "width": "5%",
+      "align": "right",
+      "disablePadding": true
+    },
+    {
+      "name": "acc",
+      "label": "Acc.",
+      "width": "10%",
+      "align": "right",
+      "disablePadding": true
+    }
+  ]
+}

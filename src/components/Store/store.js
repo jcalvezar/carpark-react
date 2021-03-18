@@ -16,8 +16,6 @@ const StateProvider = ({ children }) => {
           ],
         };
 
-      //newState.users.push({ ...action.payload, id: state.users.length + 1 });
-      //return newState;
       default:
         throw new Error();
     }

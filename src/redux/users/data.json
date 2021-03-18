@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Juan Carlos",
+      "lastname": "Alvez",
+      "email": "jcalvez@hotmail.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "firstname": "Gabriel",
+      "lastname": "Pardo",
+      "email": "gpardo@hotmail.com",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "firstname": "Erika",
+      "lastname": "Mendez",
+      "email": "emendez@hotmail.com",
+      "role": "operador"
+    },
+    {
+      "id": 4,
+      "firstname": "Patricia",
+      "lastname": "Malgor",
+      "email": "pmalgor@hotmail.com",
+      "role": "visor"
+    },
+    {
+      "id": 5,
+      "firstname": "Javier",
+      "lastname": "Fernandez",
+      "email": "jfernandez@hotmail.com",
+      "role": "operador"
+    }
+  ],
+  "usersFields": [
+    {
+      "name": "id",
+      "label": "ID",
+      "width": "8%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "lastname",
+      "label": "Apellido",
+      "width": "21%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "firstname",
+      "label": "Nombre",
+      "width": "25%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "email",
+      "label": "Email",
+      "width": "26%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "acc",
+      "label": "Acc.",
+      "width": "10%",
+      "align": "right",
+      "disablePadding": true
+    }
+  ]
+}

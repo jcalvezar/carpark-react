@@ -1,0 +1,59 @@
+{
+  "parkings": [
+    {
+      "id": 1,
+      "name": "AUDEC",
+      "from": 200,
+      "to": 300
+    },
+    {
+      "id": 2,
+      "name": "DAZUR",
+      "from": 100,
+      "to": 199
+    },
+    {
+      "id": 3,
+      "name": "Ruta 12",
+      "from": 301,
+      "to": 400
+    }
+  ],
+  "parkingsFields": [
+    {
+      "name": "id",
+      "label": "ID",
+      "width": "10%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "name",
+      "label": "Nombre",
+      "width": "50%",
+      "align": "left",
+      "disablePadding": true
+    },
+    {
+      "name": "from",
+      "label": "Desde",
+      "width": "15%",
+      "align": "right",
+      "disablePadding": true
+    },
+    {
+      "name": "to",
+      "label": "Hasta",
+      "width": "15%",
+      "align": "right",
+      "disablePadding": true
+    },
+    {
+      "name": "acc",
+      "label": "Acc.",
+      "width": "10%",
+      "align": "right",
+      "disablePadding": true
+    }
+  ]
+}
