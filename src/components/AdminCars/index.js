@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
-import { store } from "../Store/store";
+import React from "react";
+//import { store } from "../Store/store";
+import { useSelector } from "react-redux";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import JTabla from "../Table2";
+import JTabla from "../JTable";
 import ModalCars from "./Modal";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,12 +28,14 @@ export default function AdminCars() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-  const { state } = useContext(store);
-
+  //const { state } = useContext(store);
+  const { cars: myCars, carsFields } = useSelector(
+    (state) => state.carsReducer
+  );
   const cars = {
     title: "Vehiculos",
-    fields: state.carsFields,
-    rows: state.cars,
+    fields: carsFields,
+    rows: myCars,
     canAdd: true,
     modal: ModalCars,
   };

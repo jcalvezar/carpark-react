@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from "react";
-import { store } from "../Store/store";
+//import { store } from "../Store/store";
+import { useSelector } from "react-redux";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import JTabla from "../Table2";
+import JTabla from "../JTable";
 import ModalUsers from "./Modal";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,12 +25,15 @@ const useStyles = makeStyles((theme) => ({
 export default function AdminEstacionamientos() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const { users: myUsers, usersFields } = useSelector(
+    (state) => state.usersReducer
+  );
 
-  const { state } = useContext(store);
+  //const { state } = useContext(store);
   let users = {
     title: "Usuarios",
-    fields: state.usersFields,
-    rows: state.users,
+    fields: usersFields,
+    rows: myUsers,
     canAdd: true,
     modal: ModalUsers,
   };

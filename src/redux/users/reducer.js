@@ -5,7 +5,8 @@ export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_USER: {
       const { user } = action.payload;
-      return { ...state, users: [...state.users, user] };
+      const newId = Math.max(...state.users.map((user) => user.id)) + 1;
+      return { ...state, users: [...state.users, { ...user, id: newId }] };
     }
     case UPDATE_USER: {
       const { index, user } = action.payload;

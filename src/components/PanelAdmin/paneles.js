@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { store } from "../Store/store";
+import React from "react";
+//import { store } from "../Store/store";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import JTable from "../Table2";
+import JTable from "../JTable";
 import ModalCars from "../AdminCars/Modal";
 import ModalUsers from "../AdminUsers/Modal";
 import ModalParkings from "../AdminParkings/Modal";
@@ -28,34 +29,46 @@ export default function Dashboard() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-  const { state } = useContext(store);
+  //const { state } = useContext(store);
+  const { users: myUsers, usersFields } = useSelector(
+    (state) => state.usersReducer
+  );
+  const { cars: myCars, carsFields } = useSelector(
+    (state) => state.carsReducer
+  );
+  const { parkings: myParkings, parkingsFields } = useSelector(
+    (state) => state.parkingsReducer
+  );
+  const { logs: myLogs, logsFields } = useSelector(
+    (state) => state.logsReducer
+  );
   console.log("Se actualizo el STATE");
 
   const users = {
     title: "Usuarios",
-    fields: state.usersFields,
-    rows: state.users,
+    fields: usersFields,
+    rows: myUsers,
     canAdd: true,
     modal: ModalUsers,
   };
   const parkings = {
     title: "Estacionamientos",
-    fields: state.parkingsFields,
-    rows: state.parkings,
+    fields: parkingsFields,
+    rows: myParkings,
     canAdd: true,
     modal: ModalParkings,
   };
   const cars = {
     title: "Vehiculos",
-    fields: state.carsFields,
-    rows: state.cars,
+    fields: carsFields,
+    rows: myCars,
     canAdd: true,
     modal: ModalCars,
   };
   const logs = {
     title: "Bitacora",
-    fields: state.logsFields,
-    rows: state.logs,
+    fields: logsFields,
+    rows: myLogs,
     canAdd: false,
     modal: null,
   };

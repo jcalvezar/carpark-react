@@ -1,14 +1,4 @@
-import { createStore, combineReducers } from "redux";
-import usersReducer from "./users/reducer";
-import carsReducer from "./cars/reducer";
-import parkingsReducer from "./parkings/reducer";
-import logsReducer from "./logs/reducer";
+import { createStore } from "redux";
+import rootReducer from "./rootReducer";
 
-export default createStore(
-  combineReducers({
-    usersReducer,
-    carsReducer,
-    parkingsReducer,
-    logsReducer,
-  })
-);
+export default createStore(rootReducer);

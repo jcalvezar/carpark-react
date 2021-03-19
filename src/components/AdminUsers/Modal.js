@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
-import { store } from "../Store/store";
+import React, { useState } from "react";
+//import { store } from "../Store/store";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../redux/users/actions";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -7,8 +9,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Modal";
 
 export default function MiModal(props) {
-  const { addUser } = useContext(store);
   const [row, setRow] = useState(false);
+  const dispatch = useDispatch();
 
   const handleUpdate = () => {
     console.log(
@@ -16,16 +18,10 @@ export default function MiModal(props) {
         ? "UPDATE un User: " + JSON.stringify(row)
         : "ADD un User: " + JSON.stringify(row)
     );
-    addUser(row);
+
+    dispatch(addUser(row));
   };
-  /*
-		const initialState = {
-			email: row ? row.email : "",
-			firstname: row ? row.firstname : "",
-			lastname: row ? row.lastname : ""
-		};
-		const [data, setData] = React.useState(initialState);
-		*/
+
   const handleInputChange = (event) => {
     setRow({
       ...row,
@@ -36,7 +32,7 @@ export default function MiModal(props) {
   return (
     <Modal
       myRef={props.myRef}
-      guardar={props.guardar}
+      //guardar={props.guardar}
       title={row.id === "0" ? "Editar un Usuario" : "Agregar un Usuario"}
       setRow={setRow}
       handleUpdate={handleUpdate}
