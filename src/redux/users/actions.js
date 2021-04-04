@@ -1,4 +1,9 @@
-import { ADD_USER, UPDATE_USER, DELETE_USER } from "./actionTypes";
+import { SET_USERS, ADD_USER, UPDATE_USER, DELETE_USER } from "./actionTypes";
+
+export const setUsers = (users) => {
+  console.log("SET_USERS: ", users);
+  return { type: SET_USERS, payload: { users } };
+};
 
 export const addUser = (user) => {
   return { type: ADD_USER, payload: { user } };

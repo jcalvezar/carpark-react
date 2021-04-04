@@ -1,7 +1,7 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 //import Container from '@material-ui/core/Container';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -12,12 +12,11 @@ import Jregistro from "./Jregistro";
 import Jrecupero from "./Jrecupero";
 import PageError from "./PageError";
 
-// Portfolio
+// Areas de Admin
 import PanelAdmin from "../PanelAdmin";
 import AdminParkings from "../AdminParkings";
 import AdminUsers from "../AdminUsers";
 import AdminCars from "../AdminCars";
-//import TestRedux from "../TestRedux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,12 +41,10 @@ export default function Layout() {
 
       <BrowserRouter>
         <Barra appname={appName} />
-
-        <Redirect from="/" to="/home" />
         <Switch>
           <Route
             exact
-            path="/home"
+            path="/"
             render={() => <Jcontenido appname={appName} />}
           />
           <Route

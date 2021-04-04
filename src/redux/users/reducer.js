@@ -1,8 +1,12 @@
-import { ADD_USER, UPDATE_USER, DELETE_USER } from "./actionTypes";
+import { SET_USERS, ADD_USER, UPDATE_USER, DELETE_USER } from "./actionTypes";
 import initialState from "./data";
 
 export default function usersReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_USERS: {
+      const { users } = action.payload;
+      return { ...state, users: [...users] };
+    }
     case ADD_USER: {
       const { user } = action.payload;
       const newId = Math.max(...state.users.map((user) => user.id)) + 1;

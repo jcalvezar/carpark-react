@@ -1,41 +1,5 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "firstname": "Juan Carlos",
-      "lastname": "Alvez",
-      "email": "jcalvez@hotmail.com",
-      "role": "admin"
-    },
-    {
-      "id": 2,
-      "firstname": "Gabriel",
-      "lastname": "Pardo",
-      "email": "gpardo@hotmail.com",
-      "role": "admin"
-    },
-    {
-      "id": 3,
-      "firstname": "Erika",
-      "lastname": "Mendez",
-      "email": "emendez@hotmail.com",
-      "role": "operador"
-    },
-    {
-      "id": 4,
-      "firstname": "Patricia",
-      "lastname": "Malgor",
-      "email": "pmalgor@hotmail.com",
-      "role": "visor"
-    },
-    {
-      "id": 5,
-      "firstname": "Javier",
-      "lastname": "Fernandez",
-      "email": "jfernandez@hotmail.com",
-      "role": "operador"
-    }
-  ],
+  "users": [],
   "usersFields": [
     {
       "name": "id",

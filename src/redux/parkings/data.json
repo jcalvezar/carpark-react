@@ -1,24 +1,5 @@
 {
-  "parkings": [
-    {
-      "id": 1,
-      "name": "AUDEC",
-      "from": 200,
-      "to": 300
-    },
-    {
-      "id": 2,
-      "name": "DAZUR",
-      "from": 100,
-      "to": 199
-    },
-    {
-      "id": 3,
-      "name": "Ruta 12",
-      "from": 301,
-      "to": 400
-    }
-  ],
+  "parkings": [],
   "parkingsFields": [
     {
       "name": "id",

@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
-//import { store } from "../Store/store";
+import React from "react";
 import { useSelector } from "react-redux";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import JTabla from "../JTable";
+import JTable from "../JTable";
 import ModalUsers from "./Modal";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,15 +36,6 @@ export default function AdminEstacionamientos() {
     canAdd: true,
     modal: ModalUsers,
   };
-  /*
-	useEffect(() => {
-		users = {
-			...users,
-			fields: state.usersFields,
-			rows: state.users
-		};
-	}, [state])
-	*/
 
   return (
     <Container fixed style={{ paddingTop: "20px" }}>
@@ -53,7 +43,7 @@ export default function AdminEstacionamientos() {
         Administrador de Usuarios
       </Typography>
       <Paper elevation={5} className={fixedHeightPaper}>
-        <JTabla data={users} />
+        <JTable data={users} />
       </Paper>
     </Container>
   );

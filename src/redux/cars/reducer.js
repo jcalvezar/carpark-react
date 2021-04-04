@@ -1,8 +1,12 @@
-import { ADD_CAR, UPDATE_CAR, DELETE_CAR } from "./actionTypes";
+import { SET_CARS, ADD_CAR, UPDATE_CAR, DELETE_CAR } from "./actionTypes";
 import initialState from "./data";
 
 export default function carsReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_CARS: {
+      const { cars } = action.payload;
+      return { ...state, cars: [...cars] };
+    }
     case ADD_CAR: {
       const { car } = action.payload;
       return { ...state, cars: [...state.cars, car] };

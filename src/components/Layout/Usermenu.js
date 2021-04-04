@@ -1,46 +1,48 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-//import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { authLogout } from "../../redux/auth/actions";
+import { useHistory } from "react-router-dom";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import PersonIcon from "@material-ui/icons/Person";
 
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import PersonIcon from '@material-ui/icons/Person';
-
-import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-
+import IconButton from "@material-ui/core/IconButton";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const StyledMenu = withStyles({
   paper: {
-    border: '1px solid #d3d4d5',
+    border: "1px solid #d3d4d5",
   },
 })((props) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
     anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
+      vertical: "bottom",
+      horizontal: "center",
     }}
     transformOrigin={{
-      vertical: 'top',
-      horizontal: 'right',
+      vertical: "top",
+      horizontal: "right",
     }}
     {...props}
   />
 ));
 
 const StyledMenuItem = withStyles((theme) => ({
-  root: {
-
-  },
+  root: {},
 }))(MenuItem);
 
-function Usermenu(props) {
+function Usermenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { user } = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
+  let history = useHistory();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -50,19 +52,27 @@ function Usermenu(props) {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    dispatch(authLogout());
+    history.replace("/");
+  };
+
   return (
-    <div>
-		{ props.user.lastname }, { props.user.firstname }
-		 <IconButton
-				edge="end"
-				aria-label="account of current user"
+    <>
+      <Typography variant="h6">
+        {user.lastName}, {user.firstName}
+      </Typography>
+
+      <IconButton
+        edge="end"
+        aria-label="account of current user"
         aria-controls="customized-menu"
         aria-haspopup="true"
-				onClick={handleClick}
-				color="inherit"
-			>
-				<AccountCircle fontSize="large" />
-			</IconButton>
+        onClick={handleClick}
+        color="inherit"
+      >
+        <AccountCircle fontSize="large" />
+      </IconButton>
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -76,15 +86,15 @@ function Usermenu(props) {
           </ListItemIcon>
           <ListItemText primary="Perfil" />
         </StyledMenuItem>
-        <StyledMenuItem onClick={props.onSalir}>
+        <StyledMenuItem onClick={handleLogout}>
           <ListItemIcon>
             <ExitToAppIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Salir" />
         </StyledMenuItem>
       </StyledMenu>
-    </div>
+    </>
   );
 }
 
-export default Usermenu; 
+export default Usermenu;

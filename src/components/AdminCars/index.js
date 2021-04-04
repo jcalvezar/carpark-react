@@ -32,6 +32,8 @@ export default function AdminCars() {
   const { cars: myCars, carsFields } = useSelector(
     (state) => state.carsReducer
   );
+  console.log("My Cars:", myCars);
+
   const cars = {
     title: "Vehiculos",
     fields: carsFields,

@@ -218,7 +218,6 @@ export default function EnhancedTable(props) {
   const dense = true;
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [rows, setRows] = useState(props.data.rows);
-  //const rows = props.data.rows;
 
   useEffect(() => {
     setRows(props.data.rows);
@@ -268,8 +267,13 @@ export default function EnhancedTable(props) {
     setPage(0);
   };
 
-  const handleModal = (row) => {
-    modalEl.current && modalEl.current.handleClickOpen(row);
+  const handleModal = (idx) => {
+    const row = idx >= 0 ? rows[idx] : { id: 0 };
+    modalEl.current && modalEl.current.handleClickOpenModal(idx, row);
+  };
+
+  const handleDelete = (idx) => {
+    console.log("TODO -> Delete Row ", idx);
   };
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
@@ -284,7 +288,7 @@ export default function EnhancedTable(props) {
           numSelected={selected.length}
           title={props.data.title}
           openModal={() => {
-            handleModal({ id: 0 });
+            handleModal(-1);
           }}
           canAdd={props.data.canAdd}
         />
@@ -367,7 +371,7 @@ export default function EnhancedTable(props) {
                                   <IconButton
                                     aria-label="Editar"
                                     onClick={() => {
-                                      handleModal(row);
+                                      handleModal(idx);
                                     }}
                                   >
                                     <EditIcon />
@@ -377,6 +381,9 @@ export default function EnhancedTable(props) {
                                   <IconButton
                                     color="secondary"
                                     aria-label="Borrar"
+                                    onClick={() => {
+                                      handleDelete(idx);
+                                    }}
                                   >
                                     <DeleteIcon />
                                   </IconButton>

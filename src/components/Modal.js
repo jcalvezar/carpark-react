@@ -56,11 +56,12 @@ const DialogActions = withStyles((theme) => ({
 export default function CustomizedDialogs(props) {
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = (row) => {
+  const handleClickOpenModal = (idx, row) => {
     setOpen(true);
     props.setRow(row);
+    props.setIdx(idx);
   };
-  props.myRef.current.handleClickOpen = handleClickOpen;
+  props.myRef.current.handleClickOpenModal = handleClickOpenModal;
 
   const handleClose = () => {
     setOpen(false);
@@ -68,7 +69,6 @@ export default function CustomizedDialogs(props) {
 
   const handleUpdate = () => {
     props.handleUpdate();
-    //props.guardar();
     setOpen(false);
   };
 

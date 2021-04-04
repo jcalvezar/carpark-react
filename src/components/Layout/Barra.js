@@ -1,6 +1,6 @@
 import React from "react";
-import { Link as RouterLink, useHistory } from "react-router-dom";
-
+import { Link as RouterLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import AppBar from "@material-ui/core/AppBar";
@@ -79,15 +79,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Barra(props) {
   const classes = useStyles();
-  const history = useHistory();
-
-  const { isAuthenticated } = false;
-
-  const logout = () => {
-    props.logout();
-    console.log("Deslogueado...");
-    history.push("/home");
-  };
+  const { loggedIn } = useSelector((state) => state.authReducer);
 
   return (
     <AppBar position="sticky">
@@ -107,19 +99,18 @@ function Barra(props) {
             {props.appname}
           </Typography>
 
-          {isAuthenticated ? (
+          {loggedIn ? (
             <React.Fragment>
               <Jmenulist />
               <div className={classes.separador}></div>
-              <Usermenu onSalir={logout} />
+              <Usermenu />
             </React.Fragment>
           ) : (
-              <React.Fragment>
-                <Jmenulist />
-                <div className={classes.separador}></div>
-                <Jlogin onClick={props.login} />
-              </React.Fragment>
-            )}
+            <React.Fragment>
+              <div className={classes.separador}></div>
+              <Jlogin />
+            </React.Fragment>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

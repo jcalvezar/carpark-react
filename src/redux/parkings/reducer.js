@@ -1,8 +1,17 @@
-import { ADD_PARKING, UPDATE_PARKING, DELETE_PARKING } from "./actionTypes";
+import {
+  SET_PARKINGS,
+  ADD_PARKING,
+  UPDATE_PARKING,
+  DELETE_PARKING,
+} from "./actionTypes";
 import initialState from "./data";
 
 export default function parkingsReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_PARKINGS: {
+      const { parkings } = action.payload;
+      return { ...state, parkings: [...parkings] };
+    }
     case ADD_PARKING: {
       const { parking } = action.payload;
       return { ...state, parkings: [...state.parkings, parking] };

@@ -47,7 +47,7 @@ export default function Jregistro() {
     console.log("Enviando...", datos);
     //dispatch( userSignupRequest(datos) ).then( res => {
 
-    //setRegistrado(true);
+    setRegistrado(true);
     //});
   };
 
@@ -172,7 +172,7 @@ export default function Jregistro() {
               </Button>
               <Grid container justify="flex-end">
                 <Grid item>
-                  <Link component={RouterLink} to="/home" variant="body2">
+                  <Link component={RouterLink} to="/" variant="body2">
                     Already have an account? Sign in
                   </Link>
                 </Grid>

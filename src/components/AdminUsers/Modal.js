@@ -10,16 +10,16 @@ import Modal from "../Modal";
 
 export default function MiModal(props) {
   const [row, setRow] = useState(false);
+  const [idx, setIdx] = useState(false);
   const dispatch = useDispatch();
 
   const handleUpdate = () => {
-    console.log(
-      row.id === "0"
-        ? "UPDATE un User: " + JSON.stringify(row)
-        : "ADD un User: " + JSON.stringify(row)
-    );
-
-    dispatch(addUser(row));
+    if (idx >= 0) {
+      console.log("UPDATE un User: " + JSON.stringify(row));
+    } else {
+      console.log("ADD un User: " + JSON.stringify(row));
+      dispatch(addUser(row));
+    }
   };
 
   const handleInputChange = (event) => {
@@ -35,6 +35,7 @@ export default function MiModal(props) {
       //guardar={props.guardar}
       title={row.id === "0" ? "Editar un Usuario" : "Agregar un Usuario"}
       setRow={setRow}
+      setIdx={setIdx}
       handleUpdate={handleUpdate}
     >
       <Grid container spacing={3}>
