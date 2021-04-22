@@ -2,39 +2,39 @@
   "cars": [],
   "carsFields": [
     {
-      "name": "id",
+      "id": "id",
       "label": "ID",
       "width": "5%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "datein",
+      "id": "datein",
       "label": "Ingreso",
       "width": "50%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "vin",
+      "id": "vin",
       "label": "VIN",
       "width": "30%",
       "align": "right",
       "disablePadding": true
     },
     {
-      "name": "place",
+      "id": "place",
       "label": "Puesto",
       "width": "5%",
       "align": "right",
       "disablePadding": true
     },
     {
-      "name": "acc",
+      "id": "acc",
       "label": "Acc.",
       "width": "10%",
       "align": "right",
-      "disablePadding": true
+      "disablePadding": false
     }
   ]
 }

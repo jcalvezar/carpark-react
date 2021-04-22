@@ -2,46 +2,46 @@
   "logs": [],
   "logsFields": [
     {
-      "name": "id",
+      "id": "id",
       "label": "ID",
       "width": "8%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "time",
+      "id": "time",
       "label": "Hora",
       "width": "22%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "origen",
+      "id": "origen",
       "label": "Origen",
       "width": "12%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "lastname",
+      "id": "lastname",
       "label": "Apellido",
       "width": "19%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "firstname",
+      "id": "firstname",
       "label": "Nombre",
       "width": "19%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "action",
+      "id": "action",
       "label": "Evento",
       "width": "10%",
       "align": "right",
-      "disablePadding": true
+      "disablePadding": false
     }
   ]
 }

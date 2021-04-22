@@ -2,39 +2,39 @@
   "users": [],
   "usersFields": [
     {
-      "name": "id",
+      "id": "id",
       "label": "ID",
       "width": "8%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "lastname",
+      "id": "lastname",
       "label": "Apellido",
       "width": "21%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "firstname",
+      "id": "firstname",
       "label": "Nombre",
       "width": "25%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "email",
+      "id": "email",
       "label": "Email",
       "width": "26%",
       "align": "left",
       "disablePadding": true
     },
     {
-      "name": "acc",
+      "id": "acc",
       "label": "Acc.",
       "width": "10%",
       "align": "right",
-      "disablePadding": true
+      "disablePadding": false
     }
   ]
 }
