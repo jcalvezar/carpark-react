@@ -61,7 +61,7 @@ export default function CustomizedDialogs(props) {
     props.setRow(row);
     props.setIdx(idx);
   };
-  props.myRef.current.handleClickOpenModal = handleClickOpenModal;
+  //props.myRef.current.handleClickOpenModal = handleClickOpenModal;
 
   const handleClose = () => {
     setOpen(false);

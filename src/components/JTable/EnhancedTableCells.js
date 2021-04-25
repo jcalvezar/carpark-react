@@ -20,8 +20,9 @@ export default function EnhancedTableCells(props) {
     fields,
     isItemSelected,
     handleClick,
-    handleModal,
+    handleEdit,
     handleDelete,
+    editable,
     row,
     labelId,
   } = props;
@@ -40,7 +41,6 @@ export default function EnhancedTableCells(props) {
           inputProps={{ "aria-labelledby": labelId }}
         />
       </TableCell>
-
       {fields.map((field, idx) => {
         if (field.id === "id")
           return (
@@ -55,44 +55,7 @@ export default function EnhancedTableCells(props) {
               {row.id}
             </TableCell>
           );
-        if (field.id === "acc")
-          return (
-            <TableCell
-              padding={field.disablePadding ? "none" : "default"}
-              key={idx}
-              align="right"
-              width={field.width}
-              className={classes.rowButtons}
-            >
-              <ButtonGroup
-                size="small"
-                color="primary"
-                aria-label="contained primary small button group"
-              >
-                <Tooltip title="Editar">
-                  <IconButton
-                    aria-label="Editar"
-                    onClick={() => {
-                      handleModal(idx);
-                    }}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Borrar">
-                  <IconButton
-                    color="secondary"
-                    aria-label="Borrar"
-                    onClick={() => {
-                      handleDelete(idx);
-                    }}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </Tooltip>
-              </ButtonGroup>
-            </TableCell>
-          );
+
         return (
           <TableCell
             key={idx}
@@ -104,6 +67,43 @@ export default function EnhancedTableCells(props) {
           </TableCell>
         );
       })}
+      {editable && (
+        <TableCell
+          padding={"default"}
+          key={99}
+          align="right"
+          width={"10%"}
+          className={classes.rowButtons}
+        >
+          <ButtonGroup
+            size="small"
+            color="primary"
+            aria-label="contained primary small button group"
+          >
+            <Tooltip title="Editar">
+              <IconButton
+                aria-label="Editar"
+                onClick={() => {
+                  handleEdit(row);
+                }}
+              >
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Borrar">
+              <IconButton
+                color="secondary"
+                aria-label="Borrar"
+                onClick={() => {
+                  handleDelete(row);
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+          </ButtonGroup>
+        </TableCell>
+      )}
     </>
   );
 }

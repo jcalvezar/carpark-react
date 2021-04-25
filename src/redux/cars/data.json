@@ -28,13 +28,6 @@
       "width": "5%",
       "align": "right",
       "disablePadding": true
-    },
-    {
-      "id": "acc",
-      "label": "Acc.",
-      "width": "10%",
-      "align": "right",
-      "disablePadding": false
     }
   ]
 }

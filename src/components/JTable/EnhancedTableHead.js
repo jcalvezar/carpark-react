@@ -16,6 +16,7 @@ export default function EnhancedTableHead(props) {
     rowCount,
     onRequestSort,
     headCells,
+    editable,
   } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -53,6 +54,11 @@ export default function EnhancedTableHead(props) {
             </TableSortLabel>
           </TableCell>
         ))}
+        {editable && (
+          <TableCell key={"99"} align={"right"} padding={"default"}>
+            Acc
+          </TableCell>
+        )}
       </TableRow>
     </TableHead>
   );

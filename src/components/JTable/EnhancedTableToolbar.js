@@ -9,6 +9,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +17,7 @@ const useToolbarStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
+    height: "64px",
   },
   highlight:
     theme.palette.type === "light"
@@ -34,7 +36,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 export default function EnhancedTableToolbar(props) {
   const classes = useToolbarStyles();
-  const { numSelected, title, canAdd, openModal } = props;
+  const { numSelected, title, editable, openModal } = props;
 
   return (
     <Toolbar
@@ -65,14 +67,14 @@ export default function EnhancedTableToolbar(props) {
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon />
+            <DeleteIcon fontSize="large" />
           </IconButton>
         </Tooltip>
-      ) : canAdd ? (
+      ) : editable ? (
         <Tooltip title="Agregar Registro">
-          <Fab aria-label="agregar registro" onClick={openModal}>
-            <AddIcon />
-          </Fab>
+          <IconButton aria-label="agregar registro" onClick={openModal}>
+            <AddCircleIcon fontSize="large" />
+          </IconButton>
         </Tooltip>
       ) : null}
     </Toolbar>

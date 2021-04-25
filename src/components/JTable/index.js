@@ -42,8 +42,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EnhancedTable(props) {
-  const { title, fields, rows, canAdd, modal } = props;
-  const modalEl = useRef({});
+  const {
+    title,
+    fields,
+    rows,
+    editable,
+    handleAdd,
+    handleEdit,
+    handleDel,
+  } = props;
 
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -68,15 +75,6 @@ export default function EnhancedTable(props) {
       return;
     }
     setSelected([]);
-  };
-
-  const handleEdit = (idx) => {
-    const row = idx >= 0 ? rows[idx] : { id: 0 };
-    modalEl.current && modalEl.current.handleClickOpenModal(idx, row);
-  };
-
-  const handleDelete = (idx) => {
-    console.log("TODO -> Delete Row ", idx);
   };
 
   const handleClick = (event, name) => {
@@ -119,8 +117,8 @@ export default function EnhancedTable(props) {
         <EnhancedTableToolbar
           numSelected={selected.length}
           title={title}
-          canAdd={canAdd}
-          openModal={modal}
+          editable={editable}
+          openModal={handleAdd}
         />
         <TableContainer>
           <Table
@@ -138,6 +136,7 @@ export default function EnhancedTable(props) {
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
               headCells={fields}
+              editable={editable}
             />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
@@ -145,7 +144,7 @@ export default function EnhancedTable(props) {
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
-
+                  console.log("Editable: ", row.id, editable);
                   return (
                     <TableRow
                       hover
@@ -160,9 +159,10 @@ export default function EnhancedTable(props) {
                         isItemSelected={isItemSelected}
                         handleClick={handleClick}
                         handleEdit={handleEdit}
-                        handleDelete={handleDelete}
+                        handleDelete={handleDel}
                         row={row}
                         labelId={labelId}
+                        editable={editable}
                       />
                     </TableRow>
                   );
