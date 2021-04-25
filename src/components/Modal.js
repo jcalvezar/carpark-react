@@ -54,21 +54,14 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 export default function CustomizedDialogs(props) {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpenModal = (idx, row) => {
-    setOpen(true);
-    props.setRow(row);
-    props.setIdx(idx);
-  };
-  //props.myRef.current.handleClickOpenModal = handleClickOpenModal;
+  const { open, setOpen, title } = props;
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleUpdate = () => {
-    props.handleUpdate();
+    //props.handleUpdate();
     setOpen(false);
   };
 
@@ -81,12 +74,12 @@ export default function CustomizedDialogs(props) {
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {props.title}
+          {title}
         </DialogTitle>
         <DialogContent dividers>{props.children}</DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleUpdate} color="primary">
-            Guardar Cambios
+            Aceptar
           </Button>
           <Button onClick={handleClose} color="primary">
             Cancelar

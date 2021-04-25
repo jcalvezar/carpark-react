@@ -6,7 +6,7 @@
       "label": "ID",
       "width": "8%",
       "align": "left",
-      "disablePadding": true
+      "disablePadding": false
     },
     {
       "id": "time",

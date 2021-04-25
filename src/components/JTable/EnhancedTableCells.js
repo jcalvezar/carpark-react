@@ -31,16 +31,18 @@ export default function EnhancedTableCells(props) {
 
   return (
     <>
-      <TableCell
-        padding="checkbox"
-        onClick={(event) => handleClick(event, row.id)}
-      >
-        <Checkbox
-          style={{ padding: "5px 0px" }}
-          checked={isItemSelected}
-          inputProps={{ "aria-labelledby": labelId }}
-        />
-      </TableCell>
+      {editable && (
+        <TableCell
+          padding="checkbox"
+          onClick={(event) => handleClick(event, row.id)}
+        >
+          <Checkbox
+            style={{ padding: "5px 0px" }}
+            checked={isItemSelected}
+            inputProps={{ "aria-labelledby": labelId }}
+          />
+        </TableCell>
+      )}
       {fields.map((field, idx) => {
         if (field.id === "id")
           return (
