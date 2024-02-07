@@ -7,16 +7,18 @@ import Layout from "./components/Layout/Layout";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
+beforeAll(() => {
+  jest.spyOn(console, "log").mockImplementation(() => {});
+  jest.spyOn(console, "error").mockImplementation(() => {});
+});
+
+afterAll(() => {
+  // Restore the original console.log after all tests are done
+  console.log.mockRestore();
+  console.error.mockRestore();
+});
+
 describe("Auth Tests", () => {
-  beforeAll(() => {
-    jest.spyOn(console, "log").mockImplementation(() => {});
-  });
-
-  afterAll(() => {
-    // Restore the original console.log after all tests are done
-    console.log.mockRestore();
-  });
-
   it("shows the Init Screen", () => {
     const testMessage = "Ingresar";
 
@@ -47,17 +49,6 @@ describe("Auth Tests", () => {
 });
 
 describe("Users Area Tests", () => {
-  beforeAll(() => {
-    jest.spyOn(console, "log").mockImplementation(() => {});
-    jest.spyOn(console, "error").mockImplementation(() => {});
-  });
-
-  afterAll(() => {
-    // Restore the original console.log after all tests are done
-    console.log.mockRestore();
-    console.error.mockRestore();
-  });
-
   it("show Menu items", async () => {
     render(
       <Provider store={store}>
